@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kat's Kreations</title>
+<link rel="icon" href="images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-demo {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('images/2D.jpg');
+    min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+    background-image: url("images/background.png");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("images/Animation.png");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-demo {
+    background-image: url("images/mooshie-web.jpg");
+    min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-demo {
+        background-attachment: scroll;
+    }
+}
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+</style>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="#demo" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-play-circle-o"></i> DEMO REEL</a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFOLIO</a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+    <a href="docs/katoboyle-sheffield_resume.pdf" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-edit"></i> RESUME</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a> -->
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+  	<a href="#demo" class="w3-bar-item w3-button" onclick="toggleFunction()">DEMO REEL</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="docs/katoboyle-sheffield_resume.pdf" class="w3-bar-item w3-button" onclick="toggleFunction()">RESUME</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">KAT'S <span class="w3-hide-small"></span>KREATIONS</span>
+    <div class="w3-padding-large">
+	<video id="player4" class="center" width="320" height="240" controls="true">
+		<source src="videos/Demo.mp4" type="video/mp4">
+	</video>
+	<h3 class="w3-center" style="color: black">DEMO REEL</h3>
+	</div>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">ABOUT ME</h3>
+  <!-- *** Leaving this here for future reference ***
+  <p class="w3-center"><em>I love motion graphics</em></p>
+  -->
+  <p style="text-indent: 40px;">My name is Katherine – you may call me Kat. I reside in Montgomery, Alabama. I currently work for a national pharmacy and retail chain. I am earning a Bachelors of Science Degree in Media Arts and Animation. I love animation in general because the human limitations do not apply. Anything you can imagine can be drawn and animated. Some animations are fantastical while others are more realistic or “human-like”. Some teach life lessons and some take you on incredible journeys (some combine both). I connect with both types of animations as the fantastical appeals to my adventurous/daydream imagination while the realistic animations appeal to the emphatic connection between the situations of the characters and real-life experiences. <i>Alice in Wonderland</i> is my favorite movie – both the original animation and the newest rendition created by Tim Burton.</p>
+<p style="text-indent: 40px;">I am a 2017 National Technical Honor Society Inductee at the Art Institute of Pittsburgh Online Division. I also am a member of the Online Volunteers Club. 
+During my personal time, I read Dean R. Koontz and Tami Hoag books, watch CG movies and Anime, listen to music, make jewelry, take photographs, and, most importantly, spend time with my number one muse, my little impish daughter.
+</p>
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i>Katherine O'Boyle-Sheffield</b></p><br>
+      <img src="images/kat-profile.png" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <!-- Hide this text on small devices -->
+   <!-- <div class="w3-col m6 w3-hide-small w3-padding-large"> -->
+   <div class="w3-col m6 w3-padding-large">
+      <h3>HOBBIES:</h3>
+      <ul>
+      		<li>Amateur Photographer/Videographer – I have a variety of subjects I like to shoot. My main snaps are of my daughter, clouds, water, shadows, and background textures. I am currently working with a local band, Abusements, to produce their first music video.</li>
+      		<li>Drawing – I enjoy designing characters, their props, and environments. I usually draw anthropomorphic characters which have humorous traits and stories.</li>
+      		<li>Writing – I write autobiographies and storylines for my own characters. I have written short stories, essays, a song, and poetry.</li>
+      		<li>Reading – When I am feeling whimsical, I bring out my Jim Davis <i>Garfield</i> collection. When I wish to escape to an alternate realm, I pull out a suspense thriller, science fiction novel, or magickal laden tome.</li>
+      		<li>Singing – Anything on the radio which appeals to my current mood and with my boyfriend as he plays acoustic.</li>
+      		<li>Jewelry Design – Mainly costume jewelry – everything from actual costume designs for Halloween to beachy seashells to Victorian Gothic chokers.</li>
+      		<li>Learning French as a second language.</li>
+      		<li>Google Local Guide - Posting photos, critiques, and adding missing business listings.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>CAREER GOALS:</h3>
+  <ul>
+  		<li>Bachelors of Science Degree in Media Arts and Animation from the Art Institute of Pittsburgh Online Division: Projected Graduation Date February 2018</li>
+  		<li>3D and 2D Design, Photography, Editing, Production, Advertising, Marketing, Cinematography, Videography</li>
+  		<li>Gain experience by working for a television station, design business, advertising company, and/or animation studio to produce advertisements, motion graphics, animations, commercials, television idents, 3D animations, and title sequences</li>
+  		<li>Art Director</li>
+  		<li>Producer</li>
+  </ul>
+  <p>My ultimate dream goal is to create a 3D animation or live-action film in Anime style for IMAX theaters.</p>
+  <!--<p class="w3-large w3-center w3-padding-16">Im really good at:</p>
+  <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
+  </div> -->
+</div>
+
+<!--<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">14+</span><br>
+    Partners
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">55+</span><br>
+    Projects Done
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">89+</span><br>
+    Happy Clients
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">150+</span><br>
+    Meetings
+  </div>
+</div>-->
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center">MY WORK</h3>
+  <p class="w3-center"><em>Here are some examples of my work.<br> Click on the images to play the demo videos.</em></p><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col" style="width: 20%">
+      <img src="images/2D-small.png" style="width:100%" onclick="openModal();currentSlide(1)" class="w3-hover-opacity" alt="2D Graphics">
+      <p>2D Graphics</p>
+    </div>
+
+    <div class="w3-col" style="width: 20%"">
+      <img src="images/3D-small.png" style="width:100%" onclick="openModal();currentSlide(2)" class="w3-hover-opacity" alt="3D Modeling">
+      <p>3D Modeling</p>
+    </div>
+
+    <div class="w3-col" style="width: 20%"">
+      <img src="images/Animation-small.png" style="width:100%" onclick="openModal();currentSlide(3)" class="w3-hover-opacity" alt="Animation">
+      <p>Animation</p>
+    </div>
+
+    <div class="w3-col" style="width: 20%">
+      <img src="images/Motion Graphics-small.png" style="width:100%" onclick="openModal();currentSlide(4)" class="w3-hover-opacity" alt="Advertising Concepts">
+      <p>Advertising Concepts</p>
+    </div>
+    
+    <div class="w3-col" style="width: 20%"">
+      <img src="images/Rocket-small.png" style="width:100%" onclick="openModal();currentSlide(5)" class="w3-hover-opacity" alt="Class Production">
+      <p>Class Production</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="myModal" class="modal">
+  			<span class="close cursor" onclick="closeModal()">&times;</span>
+  			<div class="modal-content">
+
+    				<div class="mySlides">
+      				<div class="numbertext">1 / 5</div>
+        				<!--<img src="images/2D.tif" style="width:100%">-->
+        				<video id="player1" class="center" width="320" height="240" controls="true">
+						<source src="videos/2D WorkV02.mp4" type="video/mp4">
+					</video>
+    				</div>
+
+    				<div class="mySlides">
+      				<div class="numbertext">2 / 5</div>
+        				<!--<img src="images/3D.jpg" style="width:100%">-->
+        				<video id="player2" class="center" width="320" height="240" controls="true">
+						<source src="videos/3D ModelingV01.mp4" type="video/mp4">
+					</video>
+   				</div>
+
+    				<div class="mySlides">
+      				<div class="numbertext">3 / 5</div>
+        				<!--<img src="images/Animation.png" style="width:100%">-->
+        				<video id="player3" class="center" width="320" height="240" controls="true">
+						<source src="videos/Animations.mp4" type="video/mp4">
+					</video>
+    				</div>
+
+    				<div class="mySlides">
+      				<div class="numbertext">4 / 5</div>
+        				<!--<img src="images/Motion Graphics.png" style="width:100%">-->
+        				<video id="player4" class="center" width="320" height="240" controls="true">
+						<source src="videos/motion graphics V02.mp4" type="video/mp4">
+					</video>
+    				</div>
+    				
+    				<div class="mySlides">
+      				<div class="numbertext">5 / 5</div>
+        				<!--<img src="images/Motion Graphics.png" style="width:100%">-->
+        				<video id="player4" class="center" width="320" height="240" controls="true">
+						<source src="videos/soyouwanttobeacharacterdesignerad.mp4" type="video/mp4">
+					</video>
+    				</div>
+
+    				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    				<div class="caption-container">
+      				<p id="caption"></p>
+    				</div>
+				<div class="thumbnails"> <!-- start thumbs modal -->
+    				<div class="thumbs">
+      				<img class="demo" src="images/2D-small.png" onclick="currentSlide(1)" alt="2D Graphics">
+    				</div>
+
+    				<div class="thumbs">
+      				<img class="demo" src="images/3D-small.png" onclick="currentSlide(2)" alt="3D Modeling">
+    				</div>
+
+    				<div class="thumbs">
+      				<img class="demo" src="images/Animation-small.png" onclick="currentSlide(3)" alt="Animation">
+    				</div>
+
+    				<div class="thumbs">
+      				<img class="demo" src="images/Motion Graphics-small.png" onclick="currentSlide(4)" alt="Advertising Concepts">
+    				</div>
+    				
+    				<div class="thumbs">
+      				<img class="demo" src="images/Rocket-small.png" onclick="currentSlide(5)" alt="Class Production">
+    				</div>
+    				
+    				</div> <!-- end thumbs modal -->
+  			</div>
+		</div>
+
+<!-- Parallax demo reel image with Demo Reel text -->
+<div class="bgimg-demo w3-display-container">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">DEMO REEL</span>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="demo">
+	<h3 class="w3-center">DEMO REEL</h3>
+	<video id="player4" class="center" width="320" height="240" controls="true">
+		<source src="videos/Demo.mp4" type="video/mp4">
+	</video>
+</div>
+
+<!-- Third Parallax Image with CONTACT Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="contact">
+  <h3 class="w3-center">I would love to hear from you!</h3>
+  <!-- <p class="w3-center"><em>I'd love your feedback!</em></p> -->
+
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m4 w3-container">
+      <!-- Add Google Maps -->
+      <div id="googleMap" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
+    </div>
+    <div class="w3-col m8 w3-panel">
+      <div class="w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Montgomery, AL, US<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: <a href="mailto:katoboylesheffield@gmail.com">katoboylesheffield@gmail.com</a><br>
+      </div>
+      <p>Leave me a note:</p>
+      <form action="mail_handler.php" method="post" name="myform">
+        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+          </div>
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="email" placeholder="Email" required name="Email">
+          </div>
+        </div>
+        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+        <br>
+        <div class="g-recaptcha" data-sitekey="6Ld0m00UAAAAANtyplpeEGM2nssuY_N5McjiZ8g1"></div>
+        <button class="w3-button w3-black w3-right w3-section" type="submit">
+        <!-- <button class="w3-button w3-black w3-right w3-section" type="submit" onclick="alert('Thank you for the message!')"> -->
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <a href="http://www.facebook.com/katherine.oboylesheffield"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <!--<i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>-->
+    <a href="http://www.linkedin.com/in/katherine-oboyle-sheffield"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  <p>Web Development by <a href="https://www.linkedin.com/in/timothy-waters-a69423/" title="W3.CSS" target="_blank" class="w3-hover-text-green">Timothy Waters</a></p>
+</footer>
+
+ <script src="playwindow.js"></script>
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(32.366923, -86.297547);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+//Video player code
+window.onload = function(){
+    myPlayer1 = document.getElementById("player1");
+    myPlayer2 = document.getElementById("player2");
+    myPlayer3 = document.getElementById("player3");
+    myPlayer4 = document.getElementById("player4");
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card-2" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAANY6jJD7URbxvjCObkvDjqKxNfXnbMxA&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
+
